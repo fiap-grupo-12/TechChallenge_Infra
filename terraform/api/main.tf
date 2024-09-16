@@ -45,7 +45,7 @@ resource "aws_security_group" "lb_sg" {
 
 # ECR para armazenar a imagem do projeto
 resource "aws_ecr_repository" "project_repo" {
-  name = "dotnet-project-repo"
+  name = "techchallenge_api"
 }
 
 # LoadBalancer
