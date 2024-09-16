@@ -2,6 +2,14 @@ provider "aws" {
   region = "us-east-1"
 }
 
+terraform {
+  backend "s3" {
+    bucket = "terraform-tfstate-grupo12-fiap-2024"
+    key    = "infra/terraform.tfstate"
+    region = "us-east-1"
+  }
+}
+
 # Usar VPC e Subnet padrão
 data "aws_vpc" "default" {
   default = true
