@@ -58,10 +58,10 @@ resource "aws_lb" "main" {
 }
 
 resource "aws_lb_target_group" "ecs_tg" {
-  name     = "ecs-tg"
-  port     = 80
-  protocol = "HTTP"
-  vpc_id   = data.aws_vpc.default.id
+  name        = "ecs-tg"
+  port        = 80
+  protocol    = "HTTP"
+  vpc_id      = data.aws_vpc.default.id
   target_type = "ip"
 }
 
