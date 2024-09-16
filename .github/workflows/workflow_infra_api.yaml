@@ -46,7 +46,7 @@ jobs:
     #       run: terraform apply -auto-approve -input=false
 
     Terraform:
-        name: 'Terraform'
+        name: 'Terraform - API'
         runs-on: ubuntu-latest
         environment: production
 
@@ -79,5 +79,5 @@ jobs:
           run: terraform plan -input=false
 
         - name: Terraform Apply
-          if: github.ref == 'refs/heads/Release' && github.event_name == 'push'
+          if: github.ref == 'refs/heads/main' && github.event_name == 'push'
           run: terraform apply -auto-approve -input=false
