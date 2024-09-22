@@ -30,7 +30,7 @@ resource "aws_cognito_user_pool" "lanchonete_user_pool" {
 }
 
 # Função Lambda de autorização usando CPF ou anonimamente
-resource "aws_lambda_function" "authorizer_function" {
+resource "aws_lambda_function" "lambda_authorizer" {
   function_name = "cognito_authorizer3"
   runtime       = "dotnet6"
   role          = aws_iam_role.lambda_role.arn
@@ -55,7 +55,7 @@ data "aws_caller_identity" "current" {}
 resource "aws_lambda_permission" "api_gateway_invoke_authorizer" {
   statement_id  = "AllowExecutionFromAPIGateway"
   action        = "lambda:InvokeFunction"
-  function_name = aws_lambda_function.authorizer_function.function_name
+  function_name = aws_lambda_function.lambda_authorizer.function_name
   principal     = "apigateway.amazonaws.com"
   source_arn    = "arn:aws:execute-api:${var.region}:${data.aws_caller_identity.current.account_id}:${aws_api_gateway_rest_api.lanchonete.id}/authorizers/${aws_api_gateway_authorizer.lambda_authorizer.id}"
 
