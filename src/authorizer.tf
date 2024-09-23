@@ -57,7 +57,7 @@ resource "aws_lambda_permission" "api_gateway_invoke_authorizer" {
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.lambda_authorizer.function_name
   principal     = "apigateway.amazonaws.com"
-  source_arn    = "arn:aws:execute-api:${var.region}:${data.aws_caller_identity.current.account_id}:${aws_api_gateway_rest_api.lanchonete.id}/authorizers/${aws_api_gateway_authorizer.lambda_authorizer.id}"
+  source_arn    = "arn:aws:execute-api:${var.region}:${data.aws_caller_identity.current.account_id}:${aws_api_gateway_rest_api.lanchonete_api.id}/authorizers/${aws_api_gateway_authorizer.lambda_authorizer.id}"
 
   # Adicionar dependência explícita para garantir que o authorizer seja criado antes
   depends_on = [aws_api_gateway_authorizer.lambda_authorizer]
