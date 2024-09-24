@@ -5,7 +5,7 @@ provider "aws" {
 
 # Data Sources for Existing Resources
 data "aws_lb" "api_lb" {
-  name = "api-lb"  # Substitua pelo nome do seu Load Balancer existente
+  name = "ecs-lb"  # Substitua pelo nome do seu Load Balancer existente
 }
 
 data "aws_lb_listener" "http_listener" {
