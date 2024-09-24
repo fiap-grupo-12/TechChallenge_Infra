@@ -9,7 +9,7 @@ permissions:
 
 jobs:
     # TerraformState:
-    #     name: 'TerraformState'
+    #     name: 'Terraform State'
     #     runs-on: ubuntu-latest
     #     environment: production
     
