@@ -30,8 +30,8 @@ resource "aws_security_group" "lb_sg" {
 
   ingress {
     protocol    = "tcp"
-    from_port   = 80
-    to_port     = 80
+    from_port   = 8080
+    to_port     = 8080
     cidr_blocks = ["0.0.0.0/0"]
   }
 
@@ -59,7 +59,7 @@ resource "aws_lb" "main" {
 
 resource "aws_lb_target_group" "ecs_tg" {
   name        = "ecs-tg"
-  port        = 80
+  port        = 8080
   protocol    = "HTTP"
   vpc_id      = data.aws_vpc.default.id
   target_type = "ip"
@@ -67,7 +67,7 @@ resource "aws_lb_target_group" "ecs_tg" {
 
 resource "aws_lb_listener" "http" {
   load_balancer_arn = aws_lb.main.arn
-  port              = 80
+  port              = 8080
   protocol          = "HTTP"
 
   default_action {
